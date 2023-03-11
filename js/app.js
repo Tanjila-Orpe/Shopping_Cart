@@ -60,7 +60,7 @@ const showProductDetails = (product_id) => {
 };
 
 const showProductDetailsInModal = (product_details) => {
-   console.log(product_details);
+   console.log("==", product_details);
    setInnerText('exampleModalLabel', product_details.title);
    setInnerText('product_id', product_details.id);
    setInnerText('modal_body', product_details.description);
@@ -84,7 +84,7 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-   document.getElementById(id).innerText = Math.round(value);
+   document.getElementById(id).innerText = value;
 };
 
 // update delivery charge and total Tax
@@ -117,9 +117,8 @@ const updateTotal = () => {
 // search by category
 document.getElementById("search-btn").addEventListener("click", function () {
    const inputField = document.getElementById("input-value").value;
-   const searchedProduct = arr[0].find((p) =>
-     p.category.startsWith(`${inputField}`)
-   );
+   const searchedProduct = arr[0].filter((p) =>
+     p.title.includes(`${inputField}`));
    showProducts(searchedProduct);
  });
 
